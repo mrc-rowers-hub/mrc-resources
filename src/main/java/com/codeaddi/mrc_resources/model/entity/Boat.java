@@ -24,7 +24,7 @@ public class Boat {
   private String name;
 
   @Column(name = "avg_crew_weight")
-  private String avgCrewWeight;
+  private float avgCrewWeight;
 
   @Enumerated(EnumType.STRING)
   @Column(name = "boat_type")
