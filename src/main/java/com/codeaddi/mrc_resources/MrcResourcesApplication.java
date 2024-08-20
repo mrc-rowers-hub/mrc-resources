@@ -6,8 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class MrcResourcesApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(MrcResourcesApplication.class, args);
-	}
-
+  public static void main(String[] args) {
+    SpringApplication.run(MrcResourcesApplication.class, args);
+  }
 }
