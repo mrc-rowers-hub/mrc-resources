@@ -1,7 +1,7 @@
 package com.codeaddi.mrc_resources.controller;
 
-import com.codeaddi.mrc_resources.controller.db.BoatService;
-import com.codeaddi.mrc_resources.model.repository.entity.Boat;
+import com.codeaddi.mrc_resources.controller.db.BladeService;
+import com.codeaddi.mrc_resources.model.repository.entity.Blade;
 import java.util.List;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,16 +10,16 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@RequestMapping("/boats")
+@RequestMapping("/blades")
 @RestController
 @Slf4j
-public class BoatController {
+public class BladeController {
 
-  @Autowired BoatService boatService;
+  @Autowired BladeService bladeService;
 
   @GetMapping("/get_all")
-  public ResponseEntity<List<Boat>> getAllBoats() {
-    log.info("Retrieving all boats");
-    return ResponseEntity.ok(boatService.getAllBoats());
+  public ResponseEntity<List<Blade>> getAllBlades() {
+    log.info("Retrieving all blades");
+    return ResponseEntity.ok(bladeService.getAllBlades());
   }
 }
