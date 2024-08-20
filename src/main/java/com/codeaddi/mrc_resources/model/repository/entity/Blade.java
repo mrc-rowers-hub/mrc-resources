@@ -1,8 +1,6 @@
 package com.codeaddi.mrc_resources.model.repository.entity;
 
-import com.codeaddi.mrc_resources.model.enums.BoatType;
 import com.codeaddi.mrc_resources.model.enums.EquipmentStatus;
-import com.codeaddi.mrc_resources.model.enums.RowerLevel;
 import jakarta.persistence.*;
 import lombok.*;
 
