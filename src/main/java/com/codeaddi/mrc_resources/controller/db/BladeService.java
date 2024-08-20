@@ -14,7 +14,7 @@ public class BladeService {
   @Autowired
   BladeRepository bladeRepository;
 
-  public List<Blade> getAllBoats() {
+  public List<Blade> getAllBlades() {
     return bladeRepository.findAll();
   }
 }
