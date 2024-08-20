@@ -1,6 +1,6 @@
 package com.codeaddi.mrc_resources.testUtils;
 
-import com.codeaddi.mrc_resources.model.entity.Boat;
+import com.codeaddi.mrc_resources.model.repository.entity.Boat;
 import com.codeaddi.mrc_resources.model.enums.BoatType;
 import com.codeaddi.mrc_resources.model.enums.EquipmentStatus;
 import com.codeaddi.mrc_resources.model.enums.RowerLevel;

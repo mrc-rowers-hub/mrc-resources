@@ -1,7 +1,7 @@
 package com.codeaddi.mrc_resources.controller.db;
 
-import com.codeaddi.mrc_resources.model.BoatsRepository;
-import com.codeaddi.mrc_resources.model.entity.Boat;
+import com.codeaddi.mrc_resources.model.repository.BoatsRepository;
+import com.codeaddi.mrc_resources.model.repository.entity.Boat;
 import java.util.List;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
