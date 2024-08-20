@@ -3,7 +3,7 @@
 USE mrc_resources;
 
 INSERT INTO boats
-(name, avg_crew_weight, boat_type, minimum_rower_level, best_blades)
+(name, avg_crew_weight, boat_type, minimum_rower_level, best_blades_id)
 VALUES
 ('Elan', 70, 'COXLESS_QUAD', 'NOVICE', 1 ),
 ('Maple', 70, 'DOUBLE_SCULL', 'INTERMEDIATE', 2),
