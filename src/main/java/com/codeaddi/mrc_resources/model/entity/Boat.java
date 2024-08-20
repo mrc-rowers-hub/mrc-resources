@@ -15,30 +15,29 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Boat {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private Long id;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @Column(name = "id")
+  private Long id;
 
-    @Column(name = "name", nullable = false)
-    private String name;
+  @Column(name = "name", nullable = false)
+  private String name;
 
-    @Column(name = "avg_crew_weight")
-    private String avgCrewWeight;
+  @Column(name = "avg_crew_weight")
+  private String avgCrewWeight;
 
-    @Enumerated(EnumType.STRING)
-    @Column(name = "boat_type")
-    private BoatType boatType;
+  @Enumerated(EnumType.STRING)
+  @Column(name = "boat_type")
+  private BoatType boatType;
 
-    @Enumerated(EnumType.STRING)
-    @Column(name = "minimum_rower_level")
-    private RowerLevel minimumRowerLevel;
+  @Enumerated(EnumType.STRING)
+  @Column(name = "minimum_rower_level")
+  private RowerLevel minimumRowerLevel;
 
-    @Enumerated(EnumType.STRING)
-    @Column(name = "status")
-    private EquipmentStatus status;
+  @Enumerated(EnumType.STRING)
+  @Column(name = "status")
+  private EquipmentStatus status;
 
-    @Column(name = "best_blades_id")
-    private Long bestBladesId;
-
+  @Column(name = "best_blades_id")
+  private Long bestBladesId;
 }

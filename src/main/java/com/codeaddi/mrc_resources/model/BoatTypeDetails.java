@@ -4,7 +4,7 @@ import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 public class BoatTypeDetails {
-    private final String symbol;
-    private final int capacity;
-    private final int bladesRequired;
+  private final String symbol;
+  private final int capacity;
+  private final int bladesRequired;
 }
