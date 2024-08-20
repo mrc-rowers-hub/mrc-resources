@@ -26,12 +26,15 @@ public class Boat {
     @Column(name = "avg_crew_weight")
     private String avgCrewWeight;
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "boat_type")
     private BoatType boatType;
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "minimum_rower_level")
     private RowerLevel minimumRowerLevel;
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "status")
     private EquipmentStatus status;
 
