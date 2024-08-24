@@ -2,11 +2,24 @@ package com.codeaddi.mrc_resources.testUtils;
 
 import com.codeaddi.mrc_resources.model.enums.BoatType;
 import com.codeaddi.mrc_resources.model.enums.EquipmentStatus;
+import com.codeaddi.mrc_resources.model.enums.EquipmentType;
 import com.codeaddi.mrc_resources.model.enums.RowerLevel;
 import com.codeaddi.mrc_resources.model.repository.entity.Blade;
 import com.codeaddi.mrc_resources.model.repository.entity.Boat;
+import com.codeaddi.mrc_resources.model.repository.entity.ResourceInUse;
+
+import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.ZoneOffset;
+import java.util.Date;
+import java.util.List;
 
 public class TestData {
+  public static Instant instantNow = Instant.now();
+  public static Instant specificDateInstant = Instant.ofEpochMilli(LocalDateTime.of(2025, 1, 1, 0, 0).toInstant(ZoneOffset.UTC).toEpochMilli());
+
+
   public static Boat boat1 =
       Boat.builder()
           .avgCrewWeight(70)
@@ -17,4 +30,12 @@ public class TestData {
           .build();
   public static Blade blade1 =
       Blade.builder().name("Purples").amount(8).status(EquipmentStatus.WORKING).build();
+
+  public class ResourcesInUse{
+    public static ResourceInUse bladeResourceToday = ResourceInUse.builder().resource_id(1L).equipmentType(EquipmentType.BLADE).quantity(4).upcomingSessionId(1L).date(Date.from(instantNow)).startTime(LocalTime.NOON).endTime(LocalTime.MIDNIGHT).build();
+    public static ResourceInUse bladeResourceSetDate = ResourceInUse.builder().resource_id(1L).equipmentType(EquipmentType.BLADE).quantity(4).upcomingSessionId(2L).date(Date.from(specificDateInstant)).startTime(LocalTime.NOON).endTime(LocalTime.MIDNIGHT).build();
+    public static ResourceInUse boatResourceToday = ResourceInUse.builder().resource_id(1L).equipmentType(EquipmentType.BOAT).quantity(4).upcomingSessionId(1L).date(Date.from(instantNow)).startTime(LocalTime.NOON).endTime(LocalTime.MIDNIGHT).build();
+
+    public static List<ResourceInUse> allResourcesInUse = List.of(boatResourceToday, bladeResourceToday, bladeResourceSetDate);
+  }
 }

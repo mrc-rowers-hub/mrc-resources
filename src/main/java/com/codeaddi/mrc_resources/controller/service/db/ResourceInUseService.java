@@ -9,6 +9,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -27,6 +28,10 @@ public class ResourceInUseService {
 
   public List<ResourceInUse> getAllBoatsInUse(){
     return getAllResourcesInUse().stream().filter(resource -> resource.getEquipmentType().equals(EquipmentType.BOAT)).toList();
+  }
+
+  public List<ResourceInUse> getAllBladesInUseForDate(Date date){
+    return getAllBladesInUse().stream().filter(resource -> resource.getDate().equals(date)).toList();
   }
 
 
