@@ -1,4 +1,4 @@
-package com.codeaddi.mrc_resources.controller.db;
+package com.codeaddi.mrc_resources.controller.service.db;
 
 import com.codeaddi.mrc_resources.model.repository.BoatsRepository;
 import com.codeaddi.mrc_resources.model.repository.entity.Boat;

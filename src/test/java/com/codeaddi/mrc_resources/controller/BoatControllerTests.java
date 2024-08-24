@@ -2,7 +2,7 @@ package com.codeaddi.mrc_resources.controller;
 
 import static org.mockito.Mockito.*;
 
-import com.codeaddi.mrc_resources.controller.db.BoatService;
+import com.codeaddi.mrc_resources.controller.service.db.BoatService;
 import com.codeaddi.mrc_resources.testUtils.TestData;
 import com.codeaddi.mrc_resources.testUtils.TestUtils;
 import io.restassured.module.mockmvc.RestAssuredMockMvc;
