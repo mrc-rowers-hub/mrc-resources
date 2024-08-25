@@ -8,10 +8,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-
-import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.*;
 
 
@@ -29,20 +26,17 @@ public class ResourceInUseServiceTests {
     void getAllBladesInUseForDate_todaysDate_givesAllForToday(){
         when(resourceInUseRepository.findAll()).thenReturn(TestData.ResourcesInUse.allResourcesInUse);
 
-        Date date = Date.from(TestData.instantNow);
 
-        assertEquals(1, resourceInUseService.getAllBladesInUseForDate(date).size());
-        assertEquals(TestData.ResourcesInUse.bladeResourceToday, resourceInUseService.getAllBladesInUseForDate(date).getFirst());
+        assertEquals(1, resourceInUseService.getAllBladesInUseForDate(TestData.dateNow).size());
+        assertEquals(TestData.ResourcesInUse.bladeResourceToday, resourceInUseService.getAllBladesInUseForDate(TestData.dateNow).getFirst());
     }
 
     @Test
     void getAllBoatsInUseForDate_todaysDate_givesAllForToday(){
         when(resourceInUseRepository.findAll()).thenReturn(TestData.ResourcesInUse.allResourcesInUse);
 
-        Date date = Date.from(TestData.instantNow);
-
-        assertEquals(1, resourceInUseService.getAllBladesInUseForDate(date).size());
-        assertEquals(TestData.ResourcesInUse.boatResourceToday, resourceInUseService.getAllBoatsInUseForDate(date).getFirst());
+        assertEquals(1, resourceInUseService.getAllBladesInUseForDate(TestData.dateNow).size());
+        assertEquals(TestData.ResourcesInUse.boatResourceToday, resourceInUseService.getAllBoatsInUseForDate(TestData.dateNow).getFirst());
     }
 
 
