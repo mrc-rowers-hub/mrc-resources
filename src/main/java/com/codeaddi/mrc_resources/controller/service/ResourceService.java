@@ -31,9 +31,14 @@ public class ResourceService {
 
         List<Blade> allBlades = bladeService.getAllBlades();
         List<ResourceInUse> bladesInUse = resourceInUseService.getAllBladesInUseForDate(date);
+
+        if(anyInUseOnDate(date, bladesInUse)){
+            // find out the times
+            // if that is within 2 hours of this session, return notification of
+        }
     }
 
-    public boolean isInUseOnDate(Date date, List<ResourceInUse> bladesInUse){
+    public boolean anyInUseOnDate(Date date, List<ResourceInUse> bladesInUse){
         return bladesInUse.stream().anyMatch(blade -> blade.getDate().equals(date));
     }
 
