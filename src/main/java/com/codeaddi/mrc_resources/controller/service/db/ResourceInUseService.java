@@ -34,5 +34,9 @@ public class ResourceInUseService {
     return getAllBladesInUse().stream().filter(resource -> resource.getDate().equals(date)).toList();
   }
 
+  public List<ResourceInUse> getAllBoatsInUseForDate(Date date){
+    return getAllBoatsInUse().stream().filter(resource -> resource.getDate().equals(date)).toList();
+  }
+
 
 }

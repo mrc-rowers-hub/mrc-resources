@@ -35,7 +35,8 @@ public class TestData {
     public static ResourceInUse bladeResourceToday = ResourceInUse.builder().resource_id(1L).equipmentType(EquipmentType.BLADE).quantity(4).upcomingSessionId(1L).date(Date.from(instantNow)).startTime(LocalTime.NOON).endTime(LocalTime.MIDNIGHT).build();
     public static ResourceInUse bladeResourceSetDate = ResourceInUse.builder().resource_id(1L).equipmentType(EquipmentType.BLADE).quantity(4).upcomingSessionId(2L).date(Date.from(specificDateInstant)).startTime(LocalTime.NOON).endTime(LocalTime.MIDNIGHT).build();
     public static ResourceInUse boatResourceToday = ResourceInUse.builder().resource_id(1L).equipmentType(EquipmentType.BOAT).quantity(4).upcomingSessionId(1L).date(Date.from(instantNow)).startTime(LocalTime.NOON).endTime(LocalTime.MIDNIGHT).build();
+    public static ResourceInUse boatResourceSetDate = ResourceInUse.builder().resource_id(1L).equipmentType(EquipmentType.BOAT).quantity(4).upcomingSessionId(1L).date(Date.from(specificDateInstant)).startTime(LocalTime.NOON).endTime(LocalTime.MIDNIGHT).build();
 
-    public static List<ResourceInUse> allResourcesInUse = List.of(boatResourceToday, bladeResourceToday, bladeResourceSetDate);
+    public static List<ResourceInUse> allResourcesInUse = List.of(boatResourceToday, bladeResourceToday, bladeResourceSetDate, boatResourceSetDate);
   }
 }

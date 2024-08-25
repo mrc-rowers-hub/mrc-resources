@@ -14,15 +14,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.*;
 
-import jakarta.persistence.EntityNotFoundException;
-import java.util.Optional;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.ArgumentCaptor;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.Date;
 
@@ -42,7 +33,17 @@ public class ResourceInUseServiceTests {
 
         assertEquals(1, resourceInUseService.getAllBladesInUseForDate(date).size());
         assertEquals(TestData.ResourcesInUse.bladeResourceToday, resourceInUseService.getAllBladesInUseForDate(date).getFirst());
-
     }
+
+    @Test
+    void getAllBoatsInUseForDate_todaysDate_givesAllForToday(){
+        when(resourceInUseRepository.findAll()).thenReturn(TestData.ResourcesInUse.allResourcesInUse);
+
+        Date date = Date.from(TestData.instantNow);
+
+        assertEquals(1, resourceInUseService.getAllBladesInUseForDate(date).size());
+        assertEquals(TestData.ResourcesInUse.boatResourceToday, resourceInUseService.getAllBoatsInUseForDate(date).getFirst());
+    }
+
 
 }
