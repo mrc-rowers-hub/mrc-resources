@@ -1,4 +1,4 @@
-package com.codeaddi.mrc_resources.model.http;
+package com.codeaddi.mrc_resources.model.http.enums;
 
 public enum ResourceStatus {
     NOT_IN_USE_ON_DAY,
