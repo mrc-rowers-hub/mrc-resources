@@ -16,7 +16,6 @@ import java.util.List;
 
 public class TestData {
   private static Instant instantNow = Instant.now();
-
   private static Instant specificDateInstant =
       Instant.ofEpochMilli(
           LocalDateTime.of(2025, 1, 1, 0, 0).toInstant(ZoneOffset.UTC).toEpochMilli());
@@ -27,7 +26,6 @@ public class TestData {
   public static Date dateNow = Date.from(instantNow);
 
   public static Date specificDate = Date.from(specificDateInstant);
-
   public static Boat boat1 =
       Boat.builder()
           .avgCrewWeight(70)
