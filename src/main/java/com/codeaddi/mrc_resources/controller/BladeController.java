@@ -2,7 +2,6 @@ package com.codeaddi.mrc_resources.controller;
 
 import com.codeaddi.mrc_resources.controller.service.db.BladeService;
 import com.codeaddi.mrc_resources.model.repository.entity.Blade;
-
 import java.time.LocalDateTime;
 import java.util.List;
 import lombok.extern.slf4j.Slf4j;
@@ -26,9 +25,9 @@ public class BladeController {
     return ResponseEntity.ok(bladeService.getAllBlades());
   }
 
-//   get all at time
+  //   get all at time
   @GetMapping("/available")
-  public void getBladesAvailableAtTime(@RequestParam LocalDateTime localDateTime){
+  public void getBladesAvailableAtTime(@RequestParam LocalDateTime localDateTime) {
     // extract thje date, and the time, from localdate time
     // get all blades
     // get all BLADES in use for this date

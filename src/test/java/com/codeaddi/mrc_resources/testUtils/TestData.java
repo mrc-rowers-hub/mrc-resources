@@ -39,7 +39,6 @@ public class TestData {
   public static Blade blade1 =
       Blade.builder().name("Purples").amount(8).status(EquipmentStatus.WORKING).build();
 
-
   public class ResourcesInUse {
     public static ResourceInUse bladeResourceToday =
         ResourceInUse.builder()

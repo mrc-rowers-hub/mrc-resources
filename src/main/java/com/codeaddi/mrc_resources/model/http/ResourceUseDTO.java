@@ -2,14 +2,13 @@ package com.codeaddi.mrc_resources.model.http;
 
 import com.codeaddi.mrc_resources.model.enums.EquipmentType;
 import com.codeaddi.mrc_resources.model.http.enums.ResourceStatus;
-import lombok.extern.jackson.Jacksonized;
-
 import java.time.LocalDateTime;
+import lombok.extern.jackson.Jacksonized;
 
 @Jacksonized
 public class ResourceUseDTO {
-    private EquipmentType equipmentType;
-    private ResourceStatus resourceStatus;
-    private LocalDateTime localDateTime;
-    private LocalDateTime nextUse;
+  private EquipmentType equipmentType;
+  private ResourceStatus resourceStatus;
+  private LocalDateTime localDateTime;
+  private LocalDateTime nextUse;
 }
