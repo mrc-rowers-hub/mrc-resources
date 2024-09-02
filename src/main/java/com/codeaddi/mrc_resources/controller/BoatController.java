@@ -1,6 +1,6 @@
 package com.codeaddi.mrc_resources.controller;
 
-import com.codeaddi.mrc_resources.controller.db.BoatService;
+import com.codeaddi.mrc_resources.controller.service.db.BoatService;
 import com.codeaddi.mrc_resources.model.repository.entity.Boat;
 import java.util.List;
 import lombok.extern.slf4j.Slf4j;
