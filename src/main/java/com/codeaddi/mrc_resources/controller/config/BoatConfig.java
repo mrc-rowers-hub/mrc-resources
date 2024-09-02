@@ -1,4 +1,4 @@
-package com.codeaddi.mrc_resources.controller;
+package com.codeaddi.mrc_resources.controller.config;
 
 import com.codeaddi.mrc_resources.model.BoatTypeDetails;
 import com.codeaddi.mrc_resources.model.enums.BoatType;
