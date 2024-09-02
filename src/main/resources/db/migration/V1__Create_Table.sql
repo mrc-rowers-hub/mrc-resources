@@ -28,6 +28,3 @@ CREATE TABLE resources_in_use
     start_time          TIME NOT NULL,
     end_time            TIME NOT NULL
 )
-
-
-
