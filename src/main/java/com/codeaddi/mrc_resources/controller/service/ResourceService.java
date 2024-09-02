@@ -26,7 +26,7 @@ public class ResourceService {
 
 //    public List<Blade> getBladesAvailableAtTime(LocalDateTime localDateTime){
     // change to be 'getResourceAvailableAtTime' and then have a method for filtering boats and blades
-
+// Todo in here
     public void getBladesAvailableAtTime(LocalDateTime localDateTime){
         Map<Date, LocalTime> dateTime = DateUtil.getDateAndTimeFromLocalDateTime(localDateTime);
         Date date = dateTime.keySet().stream().findAny().orElseThrow();
