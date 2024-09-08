@@ -23,15 +23,11 @@ public class BladeController {
 
   @Autowired private ResourceService resourceService;
 
-  //  private DateUtil dateUtil;
-
   @GetMapping("/get_all")
   public ResponseEntity<List<Blade>> getAllBlades() {
     log.info("Retrieving all blades");
     return ResponseEntity.ok(bladeService.getAllBlades());
   }
-
-  //   get all at time
   @GetMapping("/available")
   public ResponseEntity<?> getBladesAvailableAtTime(@RequestParam String date) {
 
@@ -45,8 +41,4 @@ public class BladeController {
       return ResponseEntity.ok(resourceService.getBladesForDate(dateParsed));
     }
   }
-
-  // record blade in use
-
-  // do the same for boats too
 }
