@@ -18,25 +18,26 @@ public class ResourceInUseService {
     return resourceInUseRepository.findAll();
   }
 
-  public List<ResourceInUse> getAllBladesInUse() {
+  private List<ResourceInUse> getAllBladesInUse() {
     return getAllResourcesInUse().stream()
         .filter(resource -> resource.getEquipmentType().equals(EquipmentType.BLADE))
         .toList();
   }
 
-  public List<ResourceInUse> getAllBoatsInUse() {
+  private List<ResourceInUse> getAllBoatsInUse() {
     return getAllResourcesInUse().stream()
         .filter(resource -> resource.getEquipmentType().equals(EquipmentType.BOAT))
         .toList();
   }
 
-  public List<ResourceInUse> getAllBladesInUseForDate(Date date) {
-    return getAllBladesInUse().stream()
-        .filter(resource -> resource.getDate().equals(date))
-        .toList();
-  }
+  public List<ResourceInUse> getAllResourceInUseForDate(Date date, EquipmentType equipmentType) {
+      return switch (equipmentType) {
+          case EquipmentType.BLADE -> getAllBladesInUse().stream()
+                  .filter(resource -> resource.getDate().equals(date))
+                  .toList();
+          case EquipmentType.BOAT ->
+                  getAllBoatsInUse().stream().filter(resource -> resource.getDate().equals(date)).toList();
+      };
 
-  public List<ResourceInUse> getAllBoatsInUseForDate(Date date) {
-    return getAllBoatsInUse().stream().filter(resource -> resource.getDate().equals(date)).toList();
   }
 }

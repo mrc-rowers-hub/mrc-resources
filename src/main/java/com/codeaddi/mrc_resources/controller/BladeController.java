@@ -3,6 +3,7 @@ package com.codeaddi.mrc_resources.controller;
 import com.codeaddi.mrc_resources.controller.service.ResourceService;
 import com.codeaddi.mrc_resources.controller.service.db.BladeService;
 import com.codeaddi.mrc_resources.controller.util.DateUtil;
+import com.codeaddi.mrc_resources.model.enums.EquipmentType;
 import com.codeaddi.mrc_resources.model.repository.entity.Blade;
 import java.util.Date;
 import java.util.List;
@@ -23,6 +24,8 @@ public class BladeController {
 
   @Autowired private ResourceService resourceService;
 
+  EquipmentType equipmentType = EquipmentType.BLADE;
+
   @GetMapping("/get_all")
   public ResponseEntity<List<Blade>> getAllBlades() {
     log.info("Retrieving all blades");
@@ -39,7 +42,7 @@ public class BladeController {
       return ResponseEntity.badRequest()
           .body("Invalid/no date supplied. Please provide in the format dd/mm/yyyy");
     } else {
-      return ResponseEntity.ok(resourceService.getBladesForDate(dateParsed));
+      return ResponseEntity.ok(resourceService.getBladesForDate(dateParsed, equipmentType));
     }
   }
 }

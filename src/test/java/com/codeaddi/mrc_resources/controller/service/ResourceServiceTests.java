@@ -5,6 +5,7 @@ import static org.mockito.Mockito.when;
 
 import com.codeaddi.mrc_resources.controller.service.db.BladeService;
 import com.codeaddi.mrc_resources.controller.service.db.ResourceInUseService;
+import com.codeaddi.mrc_resources.model.enums.EquipmentType;
 import com.codeaddi.mrc_resources.model.http.ResourceUseDTO;
 import com.codeaddi.mrc_resources.testUtils.TestData;
 import java.util.Date;
@@ -31,10 +32,10 @@ public class ResourceServiceTests {
     Date dateForUse = TestData.DatesAndTimes.dateNow;
     when(bladeService.getAllBlades())
         .thenReturn(List.of(TestData.orangeBlades, TestData.purpleBlades));
-    when(resourceInUseService.getAllBladesInUseForDate(dateForUse))
+    when(resourceInUseService.getAllResourceInUseForDate(dateForUse, EquipmentType.BLADE))
         .thenReturn(List.of(TestData.ResourcesInUse.purpleBladeResourceToday));
 
-    List<ResourceUseDTO<Object>> bladesForDate = resourceService.getBladesForDate(dateForUse);
+    List<ResourceUseDTO<Object>> bladesForDate = resourceService.getBladesForDate(dateForUse, EquipmentType.BLADE);
 
     assertTrue(bladesForDate.size() == 2);
 
