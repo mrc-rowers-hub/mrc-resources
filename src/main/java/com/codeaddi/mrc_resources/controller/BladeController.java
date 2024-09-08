@@ -28,6 +28,7 @@ public class BladeController {
     log.info("Retrieving all blades");
     return ResponseEntity.ok(bladeService.getAllBlades());
   }
+
   @GetMapping("/available")
   public ResponseEntity<?> getBladesAvailableAtTime(@RequestParam String date) {
 
