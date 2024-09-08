@@ -28,12 +28,22 @@ public class TestData {
   // Todo pujt the blades/boats into another class
   public static Boat boat1 =
       Boat.builder()
+              .id(1L)
           .avgCrewWeight(70)
           .boatType(BoatType.COXED_FOUR)
           .name("Ian Marr")
           .minimumRowerLevel(RowerLevel.NOVICE)
           .status(EquipmentStatus.WORKING)
           .build();
+  public static Boat boat2 =
+          Boat.builder()
+                  .id(2L)
+                  .avgCrewWeight(70)
+                  .boatType(BoatType.COXED_FOUR)
+                  .name("Ian Marr")
+                  .minimumRowerLevel(RowerLevel.NOVICE)
+                  .status(EquipmentStatus.WORKING)
+                  .build();
   public static Blade purpleBlades =
       Blade.builder().id(1L).name("Purples").amount(8).status(EquipmentStatus.WORKING).build();
   public static Blade orangeBlades =

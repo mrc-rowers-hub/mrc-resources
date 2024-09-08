@@ -26,7 +26,7 @@ public class ResourceService { // Todo, maybe delete this one
     @Autowired
     ResourceInUseService resourceInUseService;
 
-    public List<ResourceUseDTO<Object>> getBladesForDate(
+    public List<ResourceUseDTO<Object>> getResourcesForDate(
             Date date, EquipmentType equipmentType) { // Todo take in type opf resource and filter by that
 
         List<?> allBlades = equipmentType.equals(EquipmentType.BLADE) ? bladeService.getAllBlades() : boatService.getAllBoats();

@@ -42,7 +42,7 @@ public class BladeController {
       return ResponseEntity.badRequest()
           .body("Invalid/no date supplied. Please provide in the format dd/mm/yyyy");
     } else {
-      return ResponseEntity.ok(resourceService.getBladesForDate(dateParsed, equipmentType));
+      return ResponseEntity.ok(resourceService.getResourcesForDate(dateParsed, equipmentType));
     }
   }
 }
