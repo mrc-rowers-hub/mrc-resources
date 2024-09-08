@@ -15,30 +15,17 @@ import java.util.Date;
 import java.util.List;
 
 public class TestData {
-  public class DatesAndTimes{
+  public class DatesAndTimes {
     public static Instant instantNow = Instant.now();
     public static Instant specificDateInstant =
-            Instant.ofEpochMilli(
-                    LocalDateTime.of(2025, 1, 1, 0, 0).toInstant(ZoneOffset.UTC).toEpochMilli());
-    public static Instant dateInstantNeverUsed =
-            Instant.ofEpochMilli(
-                    LocalDateTime.of(2026, 1, 1, 0, 0).toInstant(ZoneOffset.UTC).toEpochMilli());
-    public static Date dateNeverUsed = Date.from(dateInstantNeverUsed);
+        Instant.ofEpochMilli(
+            LocalDateTime.of(2025, 1, 1, 0, 0).toInstant(ZoneOffset.UTC).toEpochMilli());
     public static Date dateNow = Date.from(instantNow);
 
     public static Date specificDate = Date.from(specificDateInstant);
-
-    public static LocalTime am10 = LocalTime.of(10, 0);
-    public static LocalTime am959 = LocalTime.of(9, 59);
-    public static LocalTime am8 = LocalTime.of(8, 0);
-    public static LocalTime pm12 = LocalTime.of(12, 0);
-    public static LocalTime pm1201 = LocalTime.of(12, 01);
-
   }
 
-
-
-// Todo pujt the blades/boats into another class
+  // Todo pujt the blades/boats into another class
   public static Boat boat1 =
       Boat.builder()
           .avgCrewWeight(70)
@@ -50,7 +37,7 @@ public class TestData {
   public static Blade purpleBlades =
       Blade.builder().id(1L).name("Purples").amount(8).status(EquipmentStatus.WORKING).build();
   public static Blade orangeBlades =
-          Blade.builder().id(2L).name("Oranges").amount(12).status(EquipmentStatus.WORKING).build();
+      Blade.builder().id(2L).name("Oranges").amount(12).status(EquipmentStatus.WORKING).build();
 
   public class ResourcesInUse {
     public static ResourceInUse purpleBladeResourceToday =
@@ -95,6 +82,10 @@ public class TestData {
             .build();
 
     public static List<ResourceInUse> allResourcesInUse =
-        List.of(boatResourceToday, purpleBladeResourceToday, purpleBladeResourceSetDate, boatResourceSetDate);
+        List.of(
+            boatResourceToday,
+            purpleBladeResourceToday,
+            purpleBladeResourceSetDate,
+            boatResourceSetDate);
   }
 }

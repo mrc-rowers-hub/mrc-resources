@@ -21,7 +21,8 @@ public class ResourceInUseServiceTests {
   void getAllBladesInUseForDate_todaysDate_givesAllForToday() {
     when(resourceInUseRepository.findAll()).thenReturn(TestData.ResourcesInUse.allResourcesInUse);
 
-    assertEquals(1, resourceInUseService.getAllBladesInUseForDate(TestData.DatesAndTimes.dateNow).size());
+    assertEquals(
+        1, resourceInUseService.getAllBladesInUseForDate(TestData.DatesAndTimes.dateNow).size());
     assertEquals(
         TestData.ResourcesInUse.purpleBladeResourceToday,
         resourceInUseService.getAllBladesInUseForDate(TestData.DatesAndTimes.dateNow).getFirst());
@@ -31,7 +32,8 @@ public class ResourceInUseServiceTests {
   void getAllBoatsInUseForDate_todaysDate_givesAllForToday() {
     when(resourceInUseRepository.findAll()).thenReturn(TestData.ResourcesInUse.allResourcesInUse);
 
-    assertEquals(1, resourceInUseService.getAllBladesInUseForDate(TestData.DatesAndTimes.dateNow).size());
+    assertEquals(
+        1, resourceInUseService.getAllBladesInUseForDate(TestData.DatesAndTimes.dateNow).size());
     assertEquals(
         TestData.ResourcesInUse.boatResourceToday,
         resourceInUseService.getAllBoatsInUseForDate(TestData.DatesAndTimes.dateNow).getFirst());

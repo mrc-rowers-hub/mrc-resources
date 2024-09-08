@@ -3,9 +3,7 @@ package com.codeaddi.mrc_resources.controller;
 import com.codeaddi.mrc_resources.controller.service.ResourceService;
 import com.codeaddi.mrc_resources.controller.service.db.BladeService;
 import com.codeaddi.mrc_resources.controller.util.DateUtil;
-import com.codeaddi.mrc_resources.model.http.ResourceUseDTO;
 import com.codeaddi.mrc_resources.model.repository.entity.Blade;
-
 import java.util.Date;
 import java.util.List;
 import lombok.extern.slf4j.Slf4j;
@@ -23,10 +21,9 @@ public class BladeController {
 
   @Autowired private BladeService bladeService;
 
-  @Autowired
-  private ResourceService resourceService;
+  @Autowired private ResourceService resourceService;
 
-//  private DateUtil dateUtil;
+  //  private DateUtil dateUtil;
 
   @GetMapping("/get_all")
   public ResponseEntity<List<Blade>> getAllBlades() {
@@ -42,11 +39,11 @@ public class BladeController {
 
     if (dateParsed == null) {
       log.warn("Invalid date passed: {}", date);
-return ResponseEntity.badRequest().body("Invalid/no date supplied. Please provide in the format dd/mm/yyyy")  ;
+      return ResponseEntity.badRequest()
+          .body("Invalid/no date supplied. Please provide in the format dd/mm/yyyy");
     } else {
       return ResponseEntity.ok(resourceService.getBladesForDate(dateParsed));
     }
-
   }
 
   // record blade in use
