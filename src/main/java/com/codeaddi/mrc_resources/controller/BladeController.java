@@ -1,8 +1,12 @@
 package com.codeaddi.mrc_resources.controller;
 
+import com.codeaddi.mrc_resources.controller.service.ResourceService;
 import com.codeaddi.mrc_resources.controller.service.db.BladeService;
+import com.codeaddi.mrc_resources.controller.util.DateUtil;
+import com.codeaddi.mrc_resources.model.http.ResourceUseDTO;
 import com.codeaddi.mrc_resources.model.repository.entity.Blade;
-import java.time.LocalDateTime;
+
+import java.util.Date;
 import java.util.List;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +21,12 @@ import org.springframework.web.bind.annotation.RestController;
 @Slf4j
 public class BladeController {
 
-  @Autowired BladeService bladeService;
+  @Autowired private BladeService bladeService;
+
+  @Autowired
+  private ResourceService resourceService;
+
+//  private DateUtil dateUtil;
 
   @GetMapping("/get_all")
   public ResponseEntity<List<Blade>> getAllBlades() {
@@ -27,12 +36,16 @@ public class BladeController {
 
   //   get all at time
   @GetMapping("/available")
-  public void getBladesAvailableAtTime(@RequestParam LocalDateTime localDateTime) {
-    // extract thje date, and the time, from localdate time
-    // get all blades
-    // get all BLADES in use for this date
-    // if there are blades in use for this date - check the time
-    // if any in use, work that out
+  public ResponseEntity<?> getBladesAvailableAtTime(@RequestParam String date) {
+
+    Date dateParsed = DateUtil.getDateFromString(date);
+
+    if (dateParsed == null) {
+      log.warn("Invalid date passed: {}", date);
+return ResponseEntity.badRequest().body("Invalid/no date supplied. Please provide in the format dd/mm/yyyy")  ;
+    } else {
+      return ResponseEntity.ok(resourceService.getBladesForDate(dateParsed));
+    }
 
   }
 
