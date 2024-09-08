@@ -34,9 +34,9 @@ public class BladeControllerTests {
 
   @Test
   void getAllBoats_boatsInDb_returnsListOfBoats() throws JSONException {
-    when(bladeService.getAllBlades()).thenReturn(List.of(TestData.blade1));
+    when(bladeService.getAllBlades()).thenReturn(List.of(TestData.purpleBlades));
 
-    String expectedBody = testUtils.convertToJson(List.of(TestData.blade1));
+    String expectedBody = testUtils.convertToJson(List.of(TestData.purpleBlades));
 
     String actual =
         RestAssuredMockMvc.when()

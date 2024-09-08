@@ -21,7 +21,7 @@ public class ResourceInUse {
   private Long id;
 
   @Column(name = "id")
-  private Long resource_id; // for the boat, or blade
+  private Long resource_id; // for the boat, or blade // Todo update to be camelCase
 
   @Enumerated(EnumType.STRING)
   @Column(name = "type")

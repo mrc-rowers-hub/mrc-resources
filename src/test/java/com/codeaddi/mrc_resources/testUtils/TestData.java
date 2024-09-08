@@ -15,46 +15,58 @@ import java.util.Date;
 import java.util.List;
 
 public class TestData {
-  private static Instant instantNow = Instant.now();
-  private static Instant specificDateInstant =
-      Instant.ofEpochMilli(
-          LocalDateTime.of(2025, 1, 1, 0, 0).toInstant(ZoneOffset.UTC).toEpochMilli());
-  private static Instant dateInstantNeverUsed =
-      Instant.ofEpochMilli(
-          LocalDateTime.of(2026, 1, 1, 0, 0).toInstant(ZoneOffset.UTC).toEpochMilli());
-  public static Date dateNeverUsed = Date.from(dateInstantNeverUsed);
-  public static Date dateNow = Date.from(instantNow);
+  public class DatesAndTimes {
+    public static Instant instantNow = Instant.now();
+    public static Instant specificDateInstant =
+        Instant.ofEpochMilli(
+            LocalDateTime.of(2025, 1, 1, 0, 0).toInstant(ZoneOffset.UTC).toEpochMilli());
+    public static Date dateNow = Date.from(instantNow);
 
-  public static Date specificDate = Date.from(specificDateInstant);
+    public static Date specificDate = Date.from(specificDateInstant);
+  }
+
+  // Todo pujt the blades/boats into another class
   public static Boat boat1 =
       Boat.builder()
+              .id(1L)
           .avgCrewWeight(70)
           .boatType(BoatType.COXED_FOUR)
           .name("Ian Marr")
           .minimumRowerLevel(RowerLevel.NOVICE)
           .status(EquipmentStatus.WORKING)
           .build();
-  public static Blade blade1 =
-      Blade.builder().name("Purples").amount(8).status(EquipmentStatus.WORKING).build();
+  public static Boat boat2 =
+          Boat.builder()
+                  .id(2L)
+                  .avgCrewWeight(70)
+                  .boatType(BoatType.COXED_FOUR)
+                  .name("Ian Marr")
+                  .minimumRowerLevel(RowerLevel.NOVICE)
+                  .status(EquipmentStatus.WORKING)
+                  .build();
+  public static Blade purpleBlades =
+      Blade.builder().id(1L).name("Purples").amount(8).status(EquipmentStatus.WORKING).build();
+  public static Blade orangeBlades =
+      Blade.builder().id(2L).name("Oranges").amount(12).status(EquipmentStatus.WORKING).build();
 
   public class ResourcesInUse {
-    public static ResourceInUse bladeResourceToday =
+    public static ResourceInUse purpleBladeResourceToday =
         ResourceInUse.builder()
             .resource_id(1L)
             .equipmentType(EquipmentType.BLADE)
             .quantity(4)
             .upcomingSessionId(1L)
-            .date(dateNow)
+            .date(DatesAndTimes.dateNow)
             .startTime(LocalTime.NOON)
             .endTime(LocalTime.MIDNIGHT)
             .build();
-    public static ResourceInUse bladeResourceSetDate =
+    public static ResourceInUse purpleBladeResourceSetDate =
         ResourceInUse.builder()
             .resource_id(1L)
             .equipmentType(EquipmentType.BLADE)
             .quantity(4)
             .upcomingSessionId(2L)
-            .date(specificDate)
+            .date(DatesAndTimes.specificDate)
             .startTime(LocalTime.NOON)
             .endTime(LocalTime.MIDNIGHT)
             .build();
@@ -64,7 +76,7 @@ public class TestData {
             .equipmentType(EquipmentType.BOAT)
             .quantity(4)
             .upcomingSessionId(1L)
-            .date(dateNow)
+            .date(DatesAndTimes.dateNow)
             .startTime(LocalTime.NOON)
             .endTime(LocalTime.MIDNIGHT)
             .build();
@@ -74,12 +86,16 @@ public class TestData {
             .equipmentType(EquipmentType.BOAT)
             .quantity(4)
             .upcomingSessionId(1L)
-            .date(specificDate)
+            .date(DatesAndTimes.specificDate)
             .startTime(LocalTime.NOON)
             .endTime(LocalTime.MIDNIGHT)
             .build();
 
     public static List<ResourceInUse> allResourcesInUse =
-        List.of(boatResourceToday, bladeResourceToday, bladeResourceSetDate, boatResourceSetDate);
+        List.of(
+            boatResourceToday,
+            purpleBladeResourceToday,
+            purpleBladeResourceSetDate,
+            boatResourceSetDate);
   }
 }
