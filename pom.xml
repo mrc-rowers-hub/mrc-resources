@@ -12,7 +12,6 @@
 	<artifactId>mrc-resources</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>mrc-resources</name>
-	<description>Demo project for Spring Boot</description>
 	<url/>
 	<licenses>
 		<license/>
@@ -28,6 +27,8 @@
 	</scm>
 	<properties>
 		<java.version>22</java.version>
+		<maven.compiler.source>22</maven.compiler.source>
+		<maven.compiler.target>22</maven.compiler.target>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -98,6 +99,8 @@
 	</dependencies>
 
 	<build>
+		<finalName>mrc-resources</finalName>
+
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
