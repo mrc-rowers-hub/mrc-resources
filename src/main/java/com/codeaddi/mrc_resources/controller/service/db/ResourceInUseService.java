@@ -6,6 +6,7 @@ import com.codeaddi.mrc_resources.model.repository.entity.ResourceInUse;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,8 +28,16 @@ public class ResourceInUseService {
 
       List<ResourceInUse> combined = new ArrayList<>(resourcesStartingWithinSession);
       combined.addAll(resourcesEndingWithinSession);
+// now filter for unique
+      HashSet<Long> seenIds = new HashSet<>();
+      List<ResourceInUse> uniqueList = new ArrayList<>();
 
-      return combined;
+      for (ResourceInUse resource : combined) {
+          if (resource.getId() != null && seenIds.add(resource.getId())) {
+              uniqueList.add(resource);
+          }
+      }
+      return uniqueList;
   }
 
   private List<ResourceInUse> getAllBladesInUse() {
