@@ -33,16 +33,11 @@ public class BoatController {
   }
 
   @GetMapping("/available")
-  public ResponseEntity<?> getBladesAvailableAtTime(@RequestParam String date) {
+  public ResponseEntity<?> getBladesAvailableAtTime(// returns all resources, but inUseOnDate shows if they're in use at the specified date/time, and if that's not null - details of the use
+          @RequestParam String date,
+          @RequestParam(required = false) String from,
+          @RequestParam(required = false) String to) {
 
-    Date dateParsed = DateUtil.getDateFromString(date);
-
-    if (dateParsed == null) {
-      log.warn("Invalid date passed: {}", date);
-      return ResponseEntity.badRequest()
-              .body("Invalid/no date supplied. Please provide in the format dd/mm/yyyy");
-    } else {
-      return ResponseEntity.ok(resourceService.getResourcesForDate(dateParsed, equipmentType));
-    }
+    return resourceService.getResourceInUseStatus(date, from, to, equipmentType);
   }
 }

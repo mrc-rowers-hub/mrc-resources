@@ -26,6 +26,19 @@ public class DateUtil {
     }
   }
 
+  public static LocalTime getTimeFromString(String input) {
+    if (input == null || input.isEmpty()) {
+      return null;
+    }
+    try {
+      DateTimeFormatter timeFormat = DateTimeFormatter.ofPattern("HHmm");
+      return LocalTime.parse(input, timeFormat);
+    } catch (Exception e) {
+      return null;
+    }
+  }
+
+
   public static Map<Date, LocalTime> getDateAndTimeFromLocalDateTime(LocalDateTime localDateTime) {
     Date date = Date.from(localDateTime.atZone(ZoneId.systemDefault()).toInstant());
     LocalTime time = localDateTime.toLocalTime();
