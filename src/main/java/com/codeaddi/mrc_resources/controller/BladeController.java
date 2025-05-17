@@ -2,12 +2,10 @@ package com.codeaddi.mrc_resources.controller;
 
 import com.codeaddi.mrc_resources.controller.service.ResourceService;
 import com.codeaddi.mrc_resources.controller.service.db.BladeService;
-import com.codeaddi.mrc_resources.controller.util.DateUtil;
+import com.codeaddi.mrc_resources.controller.service.db.ResourceInUseService;
 import com.codeaddi.mrc_resources.model.enums.EquipmentType;
 import com.codeaddi.mrc_resources.model.repository.entity.Blade;
 
-import java.time.LocalTime;
-import java.util.Date;
 import java.util.List;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,36 +32,13 @@ public class BladeController {
     return ResponseEntity.ok(bladeService.getAllBlades());
   }
 
-  @GetMapping("/available")
+  @GetMapping("/available") // todo change to availability
   public ResponseEntity<?> getBladesAvailableAtTime( // returns all resources, but inUseOnDate shows if they're in use at the specified date/time, and if that's not null - details of the use
           @RequestParam String date,
           @RequestParam(required = false) String from,
           @RequestParam(required = false) String to) {
 
-    Date dateParsed = DateUtil.getDateFromString(date);
-
-    if (dateParsed == null) {
-      log.warn("Invalid date passed: {}", date);
-      return ResponseEntity.badRequest()
-              .body("Invalid/no date supplied. Please provide in the format dd/mm/yyyy");
-    }
-    if (from == null && to != null || to == null && from != null ){
-      log.warn("Invalid timeframe passed: from {} to {}", from, to);
-      return ResponseEntity.badRequest()
-              .body("Invalid/no timeframe supplied. Please BOTH from and to");
-    }
-
-    if (from == null && to == null) {
-      log.info("Fetching all resources for date {}", dateParsed);
-      return ResponseEntity.ok(resourceService.getResourcesForDate(dateParsed, equipmentType));
-    } else {
-      LocalTime fromTime = (from != null) ? DateUtil.getTimeFromString(from) : null;
-      LocalTime toTime = (to != null) ? DateUtil.getTimeFromString(to) : null;
-
-      log.info("Fetching resources for date {}, from: {}, to: {}", dateParsed, fromTime, toTime);
-
-      return ResponseEntity.ok(resourceService.getResourcesForDateAndTime(dateParsed, fromTime, toTime, equipmentType)); // this does dupes
-    }
+    return resourceService.getResourceInUseStatus(date, from, to, equipmentType);
   }
 
 }

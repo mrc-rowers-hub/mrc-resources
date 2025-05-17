@@ -17,7 +17,7 @@ import org.springframework.stereotype.Service;
 public class ResourceInUseService {
   @Autowired ResourceInUseRepository resourceInUseRepository;
 
-  // TODO - MAKE A FILTERING METHOD THAT JUST RETURNS BLADES, OR BOATS
+
   public List<ResourceInUse> getAllResourcesInUse() {
     return resourceInUseRepository.findAll();
   }
