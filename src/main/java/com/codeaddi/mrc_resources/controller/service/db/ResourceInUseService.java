@@ -23,12 +23,17 @@ public class ResourceInUseService {
   }
 
   public List<ResourceInUse> getAllResourcesInUseWithinTimePeriod(Date dateParsed, LocalTime fromTime, LocalTime toTime){
-      List<ResourceInUse> resourcesStartingWithinSession = resourceInUseRepository.findByDateAndEndTimeAfter(dateParsed, fromTime);
-      List<ResourceInUse> resourcesEndingWithinSession = resourceInUseRepository.findByDateAndStartTimeBefore(dateParsed, toTime);
+      List<ResourceInUse>  resourcesEndingAfterSpecifiedStart = resourceInUseRepository.findByDateAndEndTimeAfter(dateParsed, fromTime);
+      List<ResourceInUse>  resourcesEndingWithinSession = resourcesEndingAfterSpecifiedStart.stream()
+              .filter(r -> r.getEndTime() != null && r.getEndTime().isBefore(toTime)).toList();
+
+      List<ResourceInUse> resourcesStartingBeforeSpecifiedEnd = resourceInUseRepository.findByDateAndStartTimeBefore(dateParsed, toTime);
+      List<ResourceInUse> resourcesStartingWithinSession = resourcesStartingBeforeSpecifiedEnd.stream()
+              .filter(r -> r.getStartTime() != null && r.getStartTime().isAfter(fromTime)).toList();
 
       List<ResourceInUse> combined = new ArrayList<>(resourcesStartingWithinSession);
       combined.addAll(resourcesEndingWithinSession);
-// now filter for unique
+
       HashSet<Long> seenIds = new HashSet<>();
       List<ResourceInUse> uniqueList = new ArrayList<>();
 

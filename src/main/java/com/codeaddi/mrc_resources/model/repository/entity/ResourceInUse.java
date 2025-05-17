@@ -20,7 +20,7 @@ public class ResourceInUse {
   @Column(name = "id", insertable = false, updatable = false)
   private Long id;
 
-  @Column(name = "id")
+  @Column(name = "resource_id")
   private Long resource_id; // for the boat, or blade // Todo update to be camelCase
 
   @Enumerated(EnumType.STRING)
