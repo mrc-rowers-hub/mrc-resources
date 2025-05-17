@@ -35,7 +35,7 @@ public class BladeController {
   }
 
   @GetMapping("/available")
-  public ResponseEntity<?> getBladesAvailableAtTime(
+  public ResponseEntity<?> getBladesAvailableAtTime( // returns all resources, but inUseOnDate shows if they're in use at the specified date/time, and if that's not null - details of the use
           @RequestParam String date,
           @RequestParam(required = false) String from,
           @RequestParam(required = false) String to) {
