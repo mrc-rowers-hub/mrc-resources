@@ -38,8 +38,14 @@ public class ResourceService { // Todo, maybe delete this one
     public List<ResourceUseDTO<Object>> getResourcesForDateAndTime(Date dateParsed, LocalTime fromTime, LocalTime toTime, EquipmentType equipmentType) {
         List<?> allOfResource = equipmentType.equals(EquipmentType.BLADE) ? bladeService.getAllBlades() : boatService.getAllBoats();
 
-        List<ResourceInUse> allInUseWithinSession = resourceInUseService.getAllResourcesInUseWithinTimePeriod(dateParsed, fromTime, toTime);
+        List<ResourceInUse> allInUseWithinSession = getAllForResourceType(resourceInUseService.getAllResourcesInUseWithinTimePeriod(dateParsed, fromTime, toTime), equipmentType);
         return getResourceStatusDtos(allOfResource, allInUseWithinSession );
+    }
+
+    public List<ResourceInUse> getAllForResourceType(List<ResourceInUse> theList, EquipmentType equipmentType) {
+        return theList.stream()
+                .filter(resource -> resource.getEquipmentType() == equipmentType)
+                .toList();
     }
 
     private List<ResourceUseDTO<Object>> getResourceStatusDtos( List<?> allResources, List<ResourceInUse> resourcesInUse){
