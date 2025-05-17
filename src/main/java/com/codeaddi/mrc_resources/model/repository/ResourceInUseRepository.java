@@ -8,7 +8,6 @@ import java.util.List;
 import java.time.LocalTime;
 
 public interface ResourceInUseRepository extends JpaRepository<ResourceInUse, Long> {
-    List<ResourceInUse> findByDateNot(Date date);
-    List<ResourceInUse> findByDateAndStartTimeAfter(Date date, LocalTime startTime);
-    List<ResourceInUse> findByDateAndEndTimeBefore(Date date, LocalTime endTime);
+    List<ResourceInUse> findByDateAndStartTimeBefore(Date date, LocalTime startTime);
+    List<ResourceInUse> findByDateAndEndTimeAfter(Date date, LocalTime endTime);
 }

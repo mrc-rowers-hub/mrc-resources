@@ -9,6 +9,7 @@ import com.codeaddi.mrc_resources.model.repository.entity.Blade;
 import com.codeaddi.mrc_resources.model.repository.entity.Boat;
 import com.codeaddi.mrc_resources.model.repository.entity.ResourceInUse;
 
+import java.time.LocalTime;
 import java.util.*;
 
 import lombok.extern.slf4j.Slf4j;
@@ -27,18 +28,28 @@ public class ResourceService { // Todo, maybe delete this one
     ResourceInUseService resourceInUseService;
 
     public List<ResourceUseDTO<Object>> getResourcesForDate(
-            Date date, EquipmentType equipmentType) { // Todo take in type opf resource and filter by that
+            Date date, EquipmentType equipmentType) {
 
-        List<?> allBlades = equipmentType.equals(EquipmentType.BLADE) ? bladeService.getAllBlades() : boatService.getAllBoats();
+        List<?> allOfResource = equipmentType.equals(EquipmentType.BLADE) ? bladeService.getAllBlades() : boatService.getAllBoats();
         List<ResourceInUse> resourcesInUseOnDate = resourceInUseService.getAllResourceInUseForDate(date, equipmentType);
+        return getResourceStatusDtos(allOfResource,resourcesInUseOnDate );
+    }
 
+    public List<ResourceUseDTO<Object>> getResourcesForDateAndTime(Date dateParsed, LocalTime fromTime, LocalTime toTime, EquipmentType equipmentType) {
+        List<?> allOfResource = equipmentType.equals(EquipmentType.BLADE) ? bladeService.getAllBlades() : boatService.getAllBoats();
+
+        List<ResourceInUse> allInUseWithinSession = resourceInUseService.getAllResourcesInUseWithinTimePeriod(dateParsed, fromTime, toTime);
+        return getResourceStatusDtos(allOfResource, allInUseWithinSession );
+    }
+
+    private List<ResourceUseDTO<Object>> getResourceStatusDtos( List<?> allResources, List<ResourceInUse> resourcesInUse){
         List<ResourceUseDTO<Object>> allResourcesOnDate = new ArrayList<>();
 
-        for (Object resource : allBlades) {
+        for (Object resource : allResources) {
             Long id = getIdFromResource(resource);
 
             List<ResourceInUse> resourcesInUseOnDay =
-                    getResourcesInUseForThisResource(id, resourcesInUseOnDate);
+                    getResourcesInUseForThisResource(id, resourcesInUse);
             allResourcesOnDate.add(
                     ResourceUseDTO.builder().resource(resource).inUseOnDate(resourcesInUseOnDay).build());
         }
